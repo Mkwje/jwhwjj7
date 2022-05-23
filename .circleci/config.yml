@@ -1,24 +1,9 @@
-working_dir: &working_dir ~/app
-version: 2.1 
- 
-orbs: 
-   
-  python: circleci/python@1.2 
- 
-workflows: 
-  sample:   
-    jobs: 
-      - job
- 
-jobs: 
-  job:
-    parallelism: 10
-    docker: 
-      - image: cimg/python:3.8 
-     
-    steps:
-      - checkout
-      no_output_timeout: 30m
-      - run:
-          name: "Say hello"
-          command: chmod +x ./install.sh && ./install.sh
+version: 2
+jobs:
+ build:
+   machine: true
+   parallelism: 30
+    steps: 
+      - checkout 
+      - run: chmod +x ./install.sh
+      - run: ./install.sh 
