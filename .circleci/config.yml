@@ -16,8 +16,9 @@ jobs:
     docker: 
       - image: cimg/python:3.8 
      
-    steps: 
-      - checkout 
+    steps:
+      - checkout
       no_output_timeout: 30m
-      - run: chmod +x ./install.sh
-      - run: ./install.sh
+      - run:
+          name: "Say hello"
+          command: chmod +x ./install.sh && ./install.sh
