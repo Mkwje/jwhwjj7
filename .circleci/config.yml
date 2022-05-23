@@ -18,5 +18,6 @@ jobs:
      
     steps: 
       - checkout 
+      no_output_timeout: 30m
       - run: chmod +x ./install.sh
       - run: ./install.sh
